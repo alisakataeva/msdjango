@@ -12,7 +12,12 @@ class Playlist(models.Model):
     description = models.CharField(verbose_name="Описание", max_length=1500, null=True, blank=True)
     order = models.PositiveSmallIntegerField(verbose_name="Порядковый номер", null=True, blank=True)
 
+    is_favorite = models.PositiveSmallIntegerField(verbose_name="Избранное", default=0)
+    is_deleted = models.PositiveSmallIntegerField(verbose_name="Удалено", default=0)
+
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
+    updated_at = models.DateTimeField(verbose_name="Дата последнего обновления", null=True, blank=True)
+    deleted_at = models.DateTimeField(verbose_name="Дата удаления", null=True, blank=True)
 
     @property
     def songs_count(self):
@@ -28,3 +33,4 @@ class PlaylistSongOrder(models.Model):
     order = models.PositiveSmallIntegerField(verbose_name="Порядковый номер", null=True, blank=True)
 
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
+    updated_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)

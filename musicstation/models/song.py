@@ -28,7 +28,12 @@ class Song(models.Model):
                               related_name="song_set")
     number = models.PositiveSmallIntegerField(verbose_name="Номер песни в альбоме", null=True, blank=True)
 
+    is_favorite = models.PositiveSmallIntegerField(verbose_name="Избранное", default=0)
+    is_deleted = models.PositiveSmallIntegerField(verbose_name="Удалено", default=0)
+
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
+    updated_at = models.DateTimeField(verbose_name="Дата последнего обновления", null=True, blank=True)
+    deleted_at = models.DateTimeField(verbose_name="Дата удаления", null=True, blank=True)
     sorting_title = models.CharField(verbose_name="Служебное название для сортировки", max_length=250, null=True,
                                      blank=True)
 
