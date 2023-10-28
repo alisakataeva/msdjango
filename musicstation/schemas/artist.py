@@ -1,6 +1,6 @@
 from typing import Optional
 
-from ninja import ModelSchema, Schema
+from ninja import ModelSchema, Schema, Field
 
 from musicstation.models import Artist
 
@@ -17,7 +17,8 @@ class ArtistInSchema(Schema):
     slug: Optional[str]
     searchstring: Optional[str]
     country: str
-    is_favorite: int
+    is_favorite: Optional[int]
+    is_deleted: Optional[int]
 
 
 #
@@ -31,6 +32,7 @@ class ArtistOutBasicSchema(ModelSchema):
 
 
 class ArtistOutSchema(ModelSchema):
+    country: str = Field(None, alias="country.code")
 
     class Config:
         model = Artist

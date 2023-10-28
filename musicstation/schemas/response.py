@@ -1,3 +1,5 @@
+from typing import Optional
+
 from common.schemas import BaseJsonResponse
 from musicstation.schemas.artist import ArtistOutSchema, ArtistOutBasicSchema
 
@@ -6,8 +8,8 @@ from musicstation.schemas.artist import ArtistOutSchema, ArtistOutBasicSchema
 
 
 class ArtistResponse(BaseJsonResponse):
-    artist_data: ArtistOutSchema
+    artist_data: Optional[ArtistOutSchema]
 
 
 class ArtistBasicListResponse(BaseJsonResponse):
-    artist_list: list[ArtistOutBasicSchema]
+    artist_list: Optional[list[ArtistOutBasicSchema]]
